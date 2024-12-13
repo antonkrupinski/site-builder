@@ -14,4 +14,6 @@ const {PORT = 3000} = process.env
 
 const db = createFileDb({path: './data.json'})
 
+console.log({db})
+
 createApp({functions, db}).listen(PORT, () => console.log('app started on http://localhost:' + PORT))

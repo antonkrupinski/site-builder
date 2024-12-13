@@ -3,7 +3,7 @@
 import { readdir, writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import { createApp } from '../src/app.js';
-import { createFileDb } from 'svelite-html/db';
+import { createFileDb, createMemoryDb } from 'svelite-html/db';
 import { existsSync, mkdirSync } from 'fs';
 import { chdir } from 'process';
 
@@ -112,6 +112,8 @@ async function runDev(cwd) {
     if (config.db.type === 'file') {
         const { type, ...rest } = config.db;
         db = createFileDb(rest);
+    } else {
+        db = createMemoryDb({})
     }
 
     const port = process.env.TAILCMS_PORT ?? 3000;

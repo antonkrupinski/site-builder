@@ -10,6 +10,7 @@
     "#helpers": "./src/helpers.js"
   },
   "scripts": {
+    "start": "node bin/tailcms.js dev",
     "dev": "node bin/tailcms.js dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

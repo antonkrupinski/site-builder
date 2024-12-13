@@ -4,6 +4,7 @@ import { File, Form, Input, Select } from '#components'
 export function SetupPage({templates}) {
     return layouts.default({
         title: 'Setup CMS',
+        mode: 'setup',
         head: [
             '<link rel="stylesheet" href="/pages/setup/style.css">',
             '<script type="module" src="/js/setup.js"></script>'

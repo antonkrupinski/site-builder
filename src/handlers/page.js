@@ -61,7 +61,7 @@ export default {
         await db('pages').insert(body)
 
         return {
-            redirect: '/admin?view=pages.edit&slug=' + encodeURIComponent(body.slug)
+            redirect: '/admin?view=pages.edit&id=' + body.id
         }        
     },
     async load(body) {

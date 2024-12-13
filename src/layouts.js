@@ -41,6 +41,10 @@ export default {
             {{{head}}} 
         {{/eq}}
 
+        {{#eq mode 'setup'}}
+            {{{head}}} 
+        {{/eq}}
+
         <link rel="icon" href="/files/{{settings.favicon}}.svg" type="image/svg+xml">
 
         <title>{{seo.title}}</title>
