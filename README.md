@@ -19,6 +19,20 @@
 
 ## **Getting Started**
 
+### **0. Using npm script**
+To create site using TailCMS without cloning the repository you can do this:
+```bash
+npx tailcms@next init <folder>
+```
+the script will initialize a project and you can start working with it by running these commands:
+
+```bash
+cd <folder>
+npm install
+npm start
+```
+Now the project should be available at http://localhost:3000
+
 ### **1. Initial Setup**
 
 1. Clone the repository:

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { readdir, writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import path, { basename } from 'path';
 import { createApp } from '../src/app.js';
 import { createFileDb, createMemoryDb } from 'svelite-html/db';
 import { existsSync, mkdirSync } from 'fs';
@@ -47,10 +47,16 @@ async function initProject(cwd) {
 
     // Default content for package.json file
     const packageJsonContent = JSON.stringify({
-        type: 'module'
+        type: 'module',
+        scripts: {
+            start: 'tailcms dev'
+        },
+        dependencies: {
+            tailcms: 'next'
+        }
     }, null, 2);
 
-    const gitignoreContent = `.env\nuploads\ndata.json`;
+    const gitignoreContent = `.env\nnode_modules\nuploads\ndata.json`;
 
     // Default content for hello.js file
     const helloJsContent = `export default {
@@ -63,26 +69,32 @@ async function initProject(cwd) {
     try {
         // Create .env file with default content
         await writeFile(envFilePath, envContent, 'utf8');
-        console.log('.env file created successfully.');
+        // console.log('.env file created successfully.');
 
         // Create package.json file with default content
         await writeFile(packageJsonPath, packageJsonContent, 'utf8');
-        console.log('package.json file created successfully.');
+        // console.log('package.json file created successfully.');
 
         // Create package.json file with default content
         await writeFile(gitignorePath, gitignoreContent, 'utf8');
-        console.log('.gitignore file created successfully.');
+        // console.log('.gitignore file created successfully.');
        
         // Create directories
         await mkdirRecursive(uploadsDir);
-        console.log('uploads directory created successfully.');
+        // console.log('uploads directory created successfully.');
 
         await mkdirRecursive(functionsDir);
-        console.log('functions directory created successfully.');
+        // console.log('functions directory created successfully.');
 
         // Create hello.js file with default content
         await writeFile(helloFilePath, helloJsContent, 'utf8');
-        console.log('hello.js file created successfully.');
+        // console.log('hello.js file created successfully.');
+        
+        console.log('Project initialized successfully, now you can:')
+        console.log('')
+        console.log(`\tcd ${basename(cwd)}`)
+        console.log(`\tnpm install`)
+        console.log(`\tnpm start`)
         
     } catch (err) {
         console.error('Error during initialization:', err);
