@@ -1,3 +1,8 @@
 [build]
-  command = "npm run build"
-  publish = "public"
+  publish = "public" # or whichever folder contains CSS/JS/images
+
+# Optional redirects (if you have SPA routing)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
